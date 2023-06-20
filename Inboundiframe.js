@@ -9,9 +9,6 @@ function embedVenueUrl(url) {
     iframe.setAttribute('frameborder', '0');
     iframe.className = 'styled-iframe';
 
-    // Append iframe to the body (or any other container you prefer)
-    document.body.appendChild(iframe);
-
     // Load the iFrameResizer library
     var script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.2/js/iframeResizer.min.js';
@@ -21,4 +18,7 @@ function embedVenueUrl(url) {
     script.onload = function() {
         iFrameResize({ log: true }, '.styled-iframe');
     };
+
+    // Add the iframe just before the script tag itself
+    document.currentScript.parentNode.insertBefore(iframe, document.currentScript);
 }
