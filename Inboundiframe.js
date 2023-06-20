@@ -1,12 +1,16 @@
-function embedVenueUrl(url, iframeId) {
-    // Fetch the iframe using its ID
-    var iframe = document.getElementById(iframeId);
+function embedVenueUrl(url) {
+    // Create a new iframe element
+    var iframe = document.createElement('iframe');
 
-    // Set the source and styling of the iframe
-    iframe.src = url;
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.border = '0';
+    // Set iframe attributes
+    iframe.setAttribute('src', url);
+    iframe.setAttribute('width', '100%');
+    iframe.setAttribute('height', '100%');
+    iframe.setAttribute('frameborder', '0');
+    iframe.className = 'styled-iframe';
+
+    // Append iframe to the body (or any other container you prefer)
+    document.body.appendChild(iframe);
 
     // Load the iFrameResizer library
     var script = document.createElement('script');
@@ -15,6 +19,6 @@ function embedVenueUrl(url, iframeId) {
 
     // Use iFrameResizer to adjust the iframe's dimensions
     script.onload = function() {
-        iFrameResize({ log: true }, '#' + iframeId);
+        iFrameResize({ log: true }, '.styled-iframe');
     };
 }
