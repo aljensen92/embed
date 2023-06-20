@@ -1,6 +1,6 @@
-function embedVenueUrl(url) {
-    // Fetch the iframe using its class name
-    var iframe = document.querySelector('.styled-iframe');
+function embedVenueUrl(url, iframeId) {
+    // Fetch the iframe using its ID
+    var iframe = document.getElementById(iframeId);
 
     // Set the source and styling of the iframe
     iframe.src = url;
@@ -15,6 +15,6 @@ function embedVenueUrl(url) {
 
     // Use iFrameResizer to adjust the iframe's dimensions
     script.onload = function() {
-        iFrameResize({ log: true }, '.styled-iframe');
+        iFrameResize({ log: true }, '#' + iframeId);
     };
 }
