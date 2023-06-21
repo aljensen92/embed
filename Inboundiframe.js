@@ -7,15 +7,16 @@ function embedVenueUrl(url) {
         iframe.setAttribute('height', '100%');
         iframe.setAttribute('frameborder', '0');
         iframe.className = 'styled-iframe';
+        iframe.id = 'venue-iframe';
 
         var script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.2/js/iframeResizer.min.js';
         document.body.appendChild(script);
 
         script.onload = function() {
-            iFrameResize({ log: true }, '.styled-iframe');
+            iFrameResize({ log: true, autoResize: false }, '#venue-iframe'); // use the id of the iframe and set autoResize to false
         };
 
         document.currentScript.parentNode.insertBefore(iframe, document.currentScript);
     };
-}
+};
